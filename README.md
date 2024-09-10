@@ -3,6 +3,26 @@
 
 Web and CLI interface to roll dice.
 
+## Dependencies
+
+* nodejs v???
+* Stable rust 1.25.0+
+* Java JRE 1.8+
+* yarn
+* leiningen
+* cargo-watch
+
+Setting up on ArchLinux
+
+```sh
+git clone https://github.com/deciduously/roll.git
+cd roll
+pacman -Sy nodejs-lts-iron npm rustup jdk-openjdk yarn leiningen
+rustup update stable
+rustup default stable
+npm install
+```
+
 ## Usage
 
 * `yarn dev` and point browser to `localhost:3449` for figwheel and watching the Rust backend.  If you don't issue `:cljs/quit` at the REPL or you'll have to kill figwheel some other way.
@@ -31,14 +51,6 @@ Web server endpoints:
 * `GET /roll/:cmd` where `:cmd` is any of the above, but separated by slashes instead of spaces: `/roll/1d6`, `/roll/2d8/3d9`, `/roll/3/10d20`, `/roll/9/blello/ian`
 * `GET /items` returns all the items stored in `db.sqlite`
 * `POST /item` with an `application/json` request body like `'{"name": "blaster","damage": "1d8"}'` to insert that item into the DB
-
-## Dependencies
-
-* Stable rust 1.25.0+
-* Java JRE 1.8+
-* yarn
-* lein
-* cargo-watch
 
 ## Libraries
 ### Rust Crates
